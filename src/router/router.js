@@ -3,7 +3,7 @@ import {ReactRouter,Router ,Route ,Link,Redirect,IndexRoute,IndexLink} from 'rea
 
 import About from '../components/About';
 import Home from '../components/Home';
-import App from '../components/App';
+import Config from './config';
 import NoFind from '../components/NoFind';
 import Index from '../components/Index';
 
@@ -12,7 +12,7 @@ let enterFun = function(){
 	return false
 }
 
-var routes = (<Route path="/" component={App}>
+var routes = (<Route path="/" component={Config}>
 		<IndexRoute component={Index}></IndexRoute>
 		<Route path="home" component={Home} onEnter={enterFun}></Route>
 		<Route path="about" component={About}></Route>
