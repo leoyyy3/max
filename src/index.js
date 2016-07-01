@@ -1,12 +1,10 @@
 import React from 'react';
-
-
-import App from './components/App';
-
 import ReactDOM from 'react-dom';
+import {ReactRouter,Router ,Route ,Link,Redirect,IndexRoute,IndexLink} from 'react-router';
 
+import routers from './router/router';
 
 ReactDOM.render(
-	<App></App>,
+	<Router>{routers}</Router>,
 	document.body
 )

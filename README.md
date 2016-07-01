@@ -44,3 +44,5 @@ http://www.myexception.cn/web/2016594.html
 
 babel-core 5.8.38
 
+react 搭建 http://www.cnblogs.com/Mrs-cc/p/4972750.html
+
