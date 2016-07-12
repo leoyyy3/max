@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {ReactRouter,Router ,Route ,Link,Redirect,IndexRoute,IndexLink} from 'react-router';
+import {hashHistory,Router} from 'react-router';
+//browserHistory,Link,Redirect,IndexRoute,IndexLink
 
 import routers from './router/router';
 
 ReactDOM.render(
-	<Router>{routers}</Router>,
+	<Router history={hashHistory}>{routers}</Router>,
 	document.body
 )

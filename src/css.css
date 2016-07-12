@@ -1,0 +1,58 @@
+body, form, ul, ol, table, input, button, p, h1, h2, h3, h4, h5, h6, blockquote, pre, dl, dt, dd, div, span, b, i {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  color: #222;
+  background-color: #efefef;
+  font-size: 14px;
+  word-wrap: break-word;
+  line-height: 1em;
+}
+
+input, select, textarea, button, body, code {
+  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+button:focus, input:focus {
+  outline: 0;
+}
+
+.max-sprite, .max-head, .max-logo, .max-menu1, .max-menu2, .max-phone, .max-wechart {
+  background-image: url('../images/max-s29f953a911.png');
+  background-repeat: no-repeat;
+}
+
+.max-head {
+  background-position: 0 0;
+}
+
+.max-logo {
+  background-position: 0 -82px;
+}
+
+.max-menu1 {
+  background-position: 0 -111px;
+}
+
+.max-menu2 {
+  background-position: 0 -127px;
+}
+
+.max-phone {
+  background-position: 0 -143px;
+}
+
+.max-wechart {
+  background-position: 0 -223px;
+}
+
+.wrap {
+  width: 1200px;
+  margin: 0 auto;
+  background: #222426;
+}
+
+/*# sourceMappingURL=css.css.map */

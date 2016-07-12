@@ -23,3 +23,18 @@ line_comments = false
 # preferred_syntax = :sass
 # and then run:
 # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
+on_sprite_saved do |filename|
+  if File.exists?(filename)
+    # FileUtils.cp filename, filename.gsub(%r{-s[a-z0-9]{10}\.png$}, '.png')
+    FileUtils.mv filename, filename.gsub(%r{-s[a-z0-9]{10}\.png$}, '.png')
+  end
+end
+
+on_stylesheet_saved do |filename|
+  if File.exists?(filename)
+    css = File.read filename
+    File.open(filename, 'w+') do |buffer|
+      buffer << css.gsub(%r{-s[a-z0-9]{10}\.png}, '.png')
+    end
+  end
+end

@@ -24,6 +24,7 @@
     "element-resize-event": "^2.0.5",
     "express": "^4.14.0",
     "file-loader": "^0.7.2",
+    "fs": "0.0.2",
     "less": "^1.7.5",
     "less-loader": "^0.7.7",
     "path": "^0.12.7",

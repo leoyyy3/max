@@ -12,10 +12,11 @@ class App extends Component{
     this.state = {title:'123'}
   }
   render(){
-    var x = this.props.route.name;
+    var pathname = this.props.location.pathname;
+    // console.log(pathname)
     return (
       <div className="wrap">
-         <Head text="123"></Head>
+         <Head text={pathname}></Head>
          <Slider></Slider>
          <div className="content">
          	<Title></Title>

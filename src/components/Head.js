@@ -1,16 +1,29 @@
 import React,{findDOMNode,Component} from 'react';
-import {ReactRouter,Router ,Route ,Link,Redirect,IndexRoute,IndexLink} from 'react-router';
-
 
 class Head extends Component{
-// ()=>{console.log(this.props.route.name);}
-	// console.log(123);
+  showName(path){
+    switch(path){
+      case '/':
+        return '数据资产总量'
+      case '/sjzz':
+        return '数据资产总量'
+      case '/sjzzhang':
+        return '数据增长趋势'
+      case '/gmqd':
+        return '购买渠道分布'
+      case '/zxpp':
+        return '最新匹配状态'
+      case '/ppzz':
+        return '匹配增长趋势'
+    }
+  }
   render(){
-  	// var x= this;
+  	var x= this.props.text;
+    // console.log(x)
     return (
-      <header>
-      	<h1>max factory</h1>
-      	<div className="head_tit">{(()=>{console.log(this.props.text)})()}</div>
+      <header className="head">
+      	<h1><span></span></h1>
+      	<div className="head_tit">{this.showName(x)}</div> 
       </header>
     )
   }
