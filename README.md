@@ -48,3 +48,5 @@ react 搭建 http://www.cnblogs.com/Mrs-cc/p/4972750.html
 
 青岛：http://guahao.jkqd.gov.cn/#/index
 
+ajax: reqwest
+
