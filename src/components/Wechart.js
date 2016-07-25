@@ -1,7 +1,32 @@
 import React,{findDOMNode,Component} from 'react';
 import ReactEcharts from '../echarts-for-react';
+import reqwest from '../reqwest.min';
+import urlMap from '../config';
 
 class Wechart extends Component{
+    constructor(){
+        super();
+        this.state={
+          register_phone:'',
+          unregister_phone:''
+        }
+      }
+
+      componentWillMount(){
+        // if (this.getDOMNode()) {
+        reqwest(urlMap.wxfansInfo, function (res) {
+            if(res.flag == 200){
+                var datas = res.datas;
+                this.setState({
+                  register_phone: datas.register_phone,
+                  unregister_phone: datas.unregister_phone,
+                });
+            }
+          
+        }.bind(this))
+    // }
+      }
+
 	getOtion(){
         const option = {
             tooltip : {
@@ -10,16 +35,13 @@ class Wechart extends Component{
             },
             series : [
                 {
-                    name: '访问来源',
+                    name: '微信粉丝手机注册情况',
                     type: 'pie',
                     radius : '55%',
                     center: ['50%', '60%'],
                     data:[
-                        {value:335, name:'直接访问'},
-                        {value:310, name:'邮件营销'},
-                        {value:234, name:'联盟广告'},
-                        {value:135, name:'视频广告'},
-                        {value:1548, name:'搜索引擎'}
+                        {value:this.state.register_phone.value, name:'注册过手机号'},
+                        {value:this.state.unregister_phone.value, name:'未注册手机号'},
                     ],
                     itemStyle: {
                         emphasis: {
@@ -33,11 +55,11 @@ class Wechart extends Component{
         };
         return option;
     }
+
   render(){
-  	
     return (
       <div className="box">
-      	<h3>手机号购买渠道统计</h3>
+      	<h3>微信粉丝手机注册情况</h3>
       	<div className="box_wrap">
       	<div className="chart_left">
 			<ReactEcharts
@@ -55,13 +77,13 @@ class Wechart extends Component{
 				</tr>
 				<tr>
 					<td>注册过手机号</td>
-					<td>数量</td>
-					<td>占比</td>
+					<td>{this.state.register_phone.value}</td>
+					<td>{this.state.register_phone.precentcount}%</td>
 				</tr>
 				<tr>
 					<td>未注册手机号</td>
-					<td>数量</td>
-					<td>占比</td>
+					<td>{this.state.unregister_phone.value}</td>
+					<td>{this.state.unregister_phone.precentcount}%</td>
 				</tr>
                 </tbody>
 			</table>

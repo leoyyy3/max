@@ -1,5 +1,6 @@
 import React from 'react';
 import reqwest from '../reqwest.min';
+import urlMap from '../config';
 
 var Title = React.createClass({
   getInitialState: function() {
@@ -11,16 +12,15 @@ var Title = React.createClass({
     },
 
   componentDidMount: function() {
-    reqwest('http://rap.taobao.org/mockjs/5758/DataApi/summaryInfo?', function (res) {
+    reqwest(urlMap.summaryInfo, function (res) {
       var datas = res.datas;
-      var t = this;
-      if (this.isMounted()) {
-        t.setState({
+      // if (this.isMounted()) {
+        this.setState({
           commonuser: datas.commonuser,
           poneuser: datas.poneuser,
           wechatuser: datas.wechatuser
         });
-      }  
+      // }  
     }.bind(this))
   },
 
