@@ -50,3 +50,7 @@ react 搭建 http://www.cnblogs.com/Mrs-cc/p/4972750.html
 
 ajax: reqwest
 
+webpack --config webpack.pro.config.js
+
+http://web.jobbole.com/82999/
+

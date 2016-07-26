@@ -1,4 +1,5 @@
 import React from 'react';
+import Dialog from 'rc-dialog';
 import reqwest from '../reqwest.min';
 import urlMap from '../config';
 
@@ -7,7 +8,7 @@ var Title = React.createClass({
       return {
         commonuser: '',
         poneuser: '',
-        wechatuser: ''
+        wechatuser: '',
       };
     },
 
@@ -22,6 +23,9 @@ var Title = React.createClass({
         });
       // }  
     }.bind(this))
+  },
+  callback1:function(){
+    console.log(123)
   },
 
   render: function() {
@@ -46,6 +50,9 @@ var Title = React.createClass({
       		<div className="tit_right">
 				<p>用户总数</p>
 				<p>{this.state.wechatuser}</p>
+        <Dialog title="123" onClose={this.callback1} visible>
+      <p>first dialog</p>
+  </Dialog>
       		</div>
       	</li>
       </ul>

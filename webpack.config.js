@@ -15,13 +15,18 @@ module.exports = {
   ],
   output: {
     path:path.resolve(__dirname,'./build'),
-    filename: 'bundle.js',
+    filename: 'index.js',
     publicPath: '/build/'
   },
   plugins: [
     // new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+          NODE_ENV: JSON.stringify("production"),
+      },
+    }),
   ],
   module: {
     loaders: [

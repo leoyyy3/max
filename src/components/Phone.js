@@ -2,6 +2,7 @@ import React,{findDOMNode,Component} from 'react';
 import ReactEcharts from '../echarts-for-react';
 import reqwest from '../reqwest.min';
 import urlMap from '../config';
+import {ModalContainer, ModalDialog} from 'react-modal-dialog';
 
 class Phone extends Component{
       constructor(){
@@ -17,9 +18,17 @@ class Phone extends Component{
             TmallPct: '',//只在Tmall购买的数量所占百分比
             PosTmallValue: '',//Pos&Tmall均购买的数量
             PosTmallPct: '',//Pos&Tmall均购买的数量所占百分比
-            coincide: ''//Pos&Tmall的重合率
+            coincide: '',//Pos&Tmall的重合率
+            isShowingModal:true
         }
       }
+
+      handleClick(){
+        this.setState({isShowingModal:true})
+        }
+      handleClose(){
+        this.setState({isShowingModal:false})
+    }
 
       componentWillMount(){
         reqwest(urlMap.purchaseInfo, function (res) {
@@ -102,6 +111,18 @@ class Phone extends Component{
             />
         </div>
         <div className="chart_right">
+
+                          {
+                this.state.isShowingModal &&
+                <ModalContainer onClose={this.handleClose.bind(this)}>
+                  <ModalDialog onClose={this.handleClose.bind(this)}>
+                    <h1>Dialog Content</h1>
+                    <p>More Content. Anything goes here</p>
+                  </ModalDialog>
+                </ModalContainer>
+              }
+            
+
 			<table className="chart_tab we_tab">
             <tbody>
 				<tr>
