@@ -250,8 +250,17 @@ html ::-webkit-scrollbar:hover {
 		padding:8px 20px;
 	}
 }
+.now_tab{
+	tr td{
+		padding:8px 10px;
+		span{
+			display:block;
+			width:160px;
+		}
+	}
+}
 .chart_tab.now_tab{
-	margin:80px auto 0;
+	margin:50px auto 0;
 }
 .shuoming{
 	line-height:22px;
@@ -301,6 +310,7 @@ html ::-webkit-scrollbar:hover {
 	}
 }
 .login_text{
+	position:relative;
 	width:330px;
 	margin:40px auto 0;
 	p{
@@ -362,4 +372,11 @@ html ::-webkit-scrollbar:hover {
 	text-align:center;
 	font-size:16px;
 	text-decoration:none;
+}
+.error{
+	position:absolute;
+	color:#e95503;
+	top:-25px;
+	left:0;
+	font-size:12px;
 }

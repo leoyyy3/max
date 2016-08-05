@@ -1,6 +1,8 @@
 import React,{findDOMNode,Component} from 'react';
 import ReactEcharts from '../echarts-for-react';
-import {mhttp,urlMap} from '../mhttp';
+import reqwest from '../reqwest.min';
+import urlMap from '../config';
+import {ModalContainer, ModalDialog} from 'react-modal-dialog';
 
 class Phone extends Component{
       constructor(){
@@ -17,12 +19,19 @@ class Phone extends Component{
             PosTmallValue: '',//Pos&Tmall均购买的数量
             PosTmallPct: '',//Pos&Tmall均购买的数量所占百分比
             coincide: '',//Pos&Tmall的重合率
+            isShowingModal:true
         }
       }
 
+      handleClick(){
+        this.setState({isShowingModal:true})
+        }
+      handleClose(){
+        this.setState({isShowingModal:false})
+    }
+
       componentWillMount(){
-        mhttp({url:urlMap.purchaseInfo, 
-            success:function (res) {
+        reqwest(urlMap.purchaseInfo, function (res) {
             if(res.flag == 200){
                 var datas = res.datas;
                 this.setState({
@@ -40,7 +49,7 @@ class Phone extends Component{
                 });
             }
           
-        }.bind(this)})
+        }.bind(this))
       }
 	getOtion(){
         var state = this.state;
@@ -50,13 +59,13 @@ class Phone extends Component{
                 trigger: 'item',
                 formatter: "{a} <br/>{b}: {c} ({d}%)"
             },
-            color:[ '#606d7a','#28d8b2','#ebc44b','#51b9f2','#ceb180'],
             series: [
                 {
-                    name:'手机号购买渠道统计',
+                    name:'访问来源',
                     type:'pie',
                     // selectedMode: 'single',
                     radius: [0, '30%'],
+
                     label: {
                         normal: {
                             position: 'inner'
@@ -73,7 +82,7 @@ class Phone extends Component{
                     ]
                 },
                 {
-                    name:'手机号购买渠道统计',
+                    name:'访问来源',
                     type:'pie',
                     radius: ['40%', '55%'],
 
@@ -101,7 +110,18 @@ class Phone extends Component{
             height={300} 
             />
         </div>
-        <div className="chart_right">            
+        <div className="chart_right">
+
+                          {
+                this.state.isShowingModal &&
+                <ModalContainer onClose={this.handleClose.bind(this)}>
+                  <ModalDialog onClose={this.handleClose.bind(this)}>
+                    <h1>Dialog Content</h1>
+                    <p>More Content. Anything goes here</p>
+                  </ModalDialog>
+                </ModalContainer>
+              }
+            
 
 			<table className="chart_tab we_tab">
             <tbody>

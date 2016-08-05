@@ -1,30 +1,31 @@
 import React,{findDOMNode,Component} from 'react';
 import ReactEcharts from '../echarts-for-react';
-import reqwest from '../reqwest.min';
-import urlMap from '../config';
+import {mhttp,urlMap} from '../mhttp';
 
 class Wechart extends Component{
     constructor(){
         super();
         this.state={
           register_phone:'',
-          unregister_phone:''
+          unregister_phone:'',
+          registepct:'',
+          unregisterpct:''
         }
       }
 
       componentWillMount(){
-        // if (this.getDOMNode()) {
-        reqwest(urlMap.wxfansInfo, function (res) {
-            if(res.flag == 200){
-                var datas = res.datas;
-                this.setState({
-                  register_phone: datas.register_phone,
-                  unregister_phone: datas.unregister_phone,
-                });
-            }
-          
-        }.bind(this))
-    // }
+        mhttp({url:urlMap.wxfansInfo, 
+          success:function (res) {
+                    if(res.flag == 200){
+                        var datas = res.datas;
+                        this.setState({
+                          register_phone: datas.register_phone,
+                          registepct: datas.registepct,
+                          unregister_phone: datas.unregister_phone,
+                          unregisterpct: datas.unregisterpct,
+                        });
+                    }
+          }.bind(this)})
       }
 
 	getOtion(){
@@ -33,6 +34,7 @@ class Wechart extends Component{
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
+            color:['#606d7a','#ceb180'],
             series : [
                 {
                     name: '微信粉丝手机注册情况',
@@ -40,8 +42,8 @@ class Wechart extends Component{
                     radius : '55%',
                     center: ['50%', '60%'],
                     data:[
-                        {value:this.state.register_phone.value, name:'注册过手机号'},
-                        {value:this.state.unregister_phone.value, name:'未注册手机号'},
+                        {value:this.state.register_phone, name:'注册过手机号'},
+                        {value:this.state.unregister_phone, name:'未注册手机号'},
                     ],
                     itemStyle: {
                         emphasis: {
@@ -77,13 +79,13 @@ class Wechart extends Component{
 				</tr>
 				<tr>
 					<td>注册过手机号</td>
-					<td>{this.state.register_phone.value}</td>
-					<td>{this.state.register_phone.precentcount}%</td>
+					<td>{this.state.register_phone}</td>
+					<td>{this.state.registepct}%</td>
 				</tr>
 				<tr>
 					<td>未注册手机号</td>
-					<td>{this.state.unregister_phone.value}</td>
-					<td>{this.state.unregister_phone.precentcount}%</td>
+					<td>{this.state.unregister_phone}</td>
+					<td>{this.state.unregisterpct}%</td>
 				</tr>
                 </tbody>
 			</table>

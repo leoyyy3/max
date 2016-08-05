@@ -50,7 +50,13 @@ react 搭建 http://www.cnblogs.com/Mrs-cc/p/4972750.html
 
 ajax: reqwest
 
+启动
 webpack --config webpack.pro.config.js
+node server.js
 
 http://web.jobbole.com/82999/
+
+JRoll移动端滚动插件
+
+react+redux https://github.com/lewis617/react-redux-tutorial
 

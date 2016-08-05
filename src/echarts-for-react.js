@@ -59,7 +59,7 @@ const ReactEcharts = React.createClass({
         return echarts.getInstanceByDom(this.refs.echartsDom) || echarts.init(this.refs.echartsDom, this.props.theme);
     },
     render() {
-        let style = this.props.style || {height: '300px'};
+        let style = this.props.style || {height: '320px'};
         // for render
         return (
             <div ref='echartsDom'
