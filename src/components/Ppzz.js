@@ -96,7 +96,7 @@ class Ppzz extends Component {
 		};;
 		return option;
 	}
-	render() {
+	render() { 
 
 		return ( < div className = "box" >
 			< h3 > 近30天跨渠道ID匹配数趋势图 < /h3> < div className = "box_wrap" >

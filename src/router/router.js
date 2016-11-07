@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactRouter,Router ,Route ,Link,Redirect,IndexRoute,IndexLink} from 'react-router';
+import {ReactRouter,Router ,Route ,Link,Redirect,IndexRoute,IndexLink,hashHistory } from 'react-router';
 
 import Sjzz from '../components/Sjzz';
 import Sjzzhang from '../components/Sjzzhang';

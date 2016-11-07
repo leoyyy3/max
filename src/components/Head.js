@@ -27,6 +27,21 @@ class Head extends Component{
       </header>
     )
   }
+
+  pathName(x){
+    switch(x){
+      case '/sjzz':
+        return "资产数据";
+      case '/sjzzhang':
+        return "数据增长趋势";
+      case '/gmqd':
+        return "购买渠道分布";
+      case '/zxpp':
+        return "最新匹配状态";
+      case '/ppzz':
+        return "匹配增长趋势";
+    }
+  }
 }
 
 export default Head;
